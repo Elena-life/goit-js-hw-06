@@ -14,15 +14,17 @@ const images = [
 ];
 
 
-const galleryList = document.querySelectorAll(".gallery");
-const galleryItems = images.map((el) => {
-  return `<li><img src="${el.url}" alt="${el.alt}" width = "500"></li>`;
-
-})
+const galleryList = document.querySelector(".gallery");
+const galleryItems = ({ url, alt } = {}) => {
+  return `<li><img src=${url} alt=${alt}></li>`;
+};
+const galleryMarkup = images
+  .map((el) => {
+    return galleryItems(el);
+  })
 .join("");
 
-galleryList.insertAdjacentHTML("afterbegin", galleryItems);
-
+galleryList.insertAdjacentHTML("afterbegin", galleryMarkup);
 
 
 
